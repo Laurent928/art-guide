@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="x5-page-mode" content="default">
+<meta name="screen-orientation" content="portrait">
+<meta name="theme-color" content="#2f5d9e">
+<title>参数修正指南 · 为什么不像碧蓝幻想</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+  body{margin:0;background:#f4f2ee;color:#23262b;font-size:17px;line-height:1.75;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    padding-bottom:70px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 15px}
+  .topbar{position:-webkit-sticky;position:sticky;top:0;z-index:99;background:#efece6;border-bottom:1px solid #e0dbd2}
+  .tbin{max-width:760px;margin:0 auto;padding:9px 15px;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center}
+  .tbt{font-size:13px;font-weight:600;color:#6b7280;margin-right:10px;white-space:nowrap}
+  .bar{-webkit-box-flex:1;flex:1;height:8px;background:#ddd7cd;border-radius:99px;overflow:hidden}
+  .barf{height:100%;width:0;background:#2f5d9e;border-radius:99px;transition:width .3s}
+  .barn{font-size:13px;font-weight:700;color:#2f5d9e;margin-left:10px;min-width:36px;text-align:right}
+  header{padding:30px 0 18px;text-align:center}
+  h1{font-size:24px;line-height:1.35;margin:0 0 10px;font-weight:700}
+  h1 small{display:block;font-size:16px;color:#2f5d9e;font-weight:600;margin-top:6px}
+  .sub{color:#6b7280;font-size:15px;margin:0 auto;max-width:520px;line-height:1.7}
+  .nav{display:-webkit-box;display:flex;margin:14px 0 18px}
+  .nav a{-webkit-box-flex:1;flex:1;text-align:center;text-decoration:none;font-size:14px;font-weight:700;
+         color:#2f5d9e;background:#fff;border:1.5px solid #c9dcf3;border-radius:11px;padding:12px 4px;margin-right:8px}
+  .nav a:last-child{margin-right:0}
+  .card{background:#fff;border:1px solid #e3ded6;border-radius:14px;padding:20px 17px;margin:0 0 16px;
+        box-shadow:0 1px 3px rgba(20,20,30,.05)}
+  .ch{display:-webkit-box;display:flex;-webkit-box-align:start;align-items:flex-start;margin-bottom:4px}
+  .no{width:32px;height:32px;min-width:32px;border-radius:9px;background:#2f5d9e;color:#fff;
+      font-weight:700;font-size:16px;text-align:center;line-height:32px;margin-right:11px}
+  .card h2{font-size:19px;margin:0;line-height:1.4;font-weight:700;padding-top:3px}
+  .card h3{font-size:16px;margin:22px 0 7px;color:#2f5d9e}
+  .lead{color:#6b7280;font-size:15px;margin:8px 0 14px}
+  .card p{margin:10px 0}
+  .note{border-left:4px solid #2f5d9e;background:#eaf1fa;padding:12px 14px;border-radius:0 9px 9px 0;margin:14px 0;font-size:15.5px}
+  .note.w{border-color:#a97c2f;background:#fdf6e8}
+  .note.b{border-color:#b4443a;background:#fdeceb}
+  .note.g{border-color:#2f8f5b;background:#e9f6ee}
+  .note b{display:block;margin-bottom:3px}
+  .cbox{border:1px solid #c9dcf3;border-radius:11px;overflow:hidden;margin:14px 0;background:#fbfdff}
+  .chead{padding:9px 12px;background:#eef4fc;border-bottom:1px solid #c9dcf3}
+  .clabel{display:block;font-size:13px;font-weight:700;color:#2f5d9e;margin-bottom:8px;line-height:1.4}
+  .cbtns{display:-webkit-box;display:flex}
+  .cbtn{-webkit-box-flex:1;flex:1;border:0;background:#2f5d9e;color:#fff;font-weight:700;font-size:15px;
+        padding:13px 8px;border-radius:9px;font-family:inherit;min-height:46px;cursor:pointer;margin-right:8px}
+  .cbtn:last-child{margin-right:0}
+  .cbtn.alt{background:#fff;color:#2f5d9e;border:1.5px solid #2f5d9e}
+  .cbtn.ok{background:#2f8f5b}
+  .ctext{padding:14px;white-space:pre-wrap;word-break:break-word;font-size:15px;line-height:1.8;color:#1f2937}
+  .chk{display:-webkit-box;display:flex;padding:14px;margin:8px 0;border:1px solid #e3ded6;border-radius:11px;background:#fcfbf9}
+  .chk.on{background:#e9f6ee;border-color:#bfe3cd}
+  .chk input{-webkit-appearance:none;appearance:none;width:24px;height:24px;min-width:24px;margin:2px 11px 0 0;
+             border:2px solid #c8c2b8;border-radius:7px;background:#fff;position:relative;padding:0}
+  .chk input:checked{background:#2f8f5b;border-color:#2f8f5b}
+  .chk input:checked:after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;
+                           border:solid #fff;border-width:0 2.5px 2.5px 0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+  .chk span{-webkit-box-flex:1;flex:1;font-size:15.5px;line-height:1.6}
+  .chk.on span{color:#1f6b45}
+  .faq{border:1px solid #e3ded6;border-radius:11px;margin:9px 0;background:#fcfbf9;overflow:hidden}
+  .fq{padding:15px 16px;font-weight:600;font-size:16px;display:-webkit-box;display:flex;
+      -webkit-box-pack:justify;justify-content:space-between;-webkit-box-align:center;align-items:center}
+  .fq .ar{color:#2f5d9e;font-weight:700;font-size:19px;margin-left:10px}
+  .fa{padding:0 16px 16px;font-size:15.5px;color:#3a3f47;display:none}
+  .faq.open .fa{display:block}
+  ol,ul{padding-left:21px;margin:10px 0}
+  li{margin:6px 0}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:12px 0}
+  th,td{border:1px solid #e0dbd2;padding:9px 8px;text-align:left;line-height:1.5;vertical-align:top}
+  th{background:#f2efe9;font-weight:700}
+  td.old{color:#b4443a}
+  td.new{color:#2f8f5b;font-weight:700}
+  .end{text-align:center;padding:26px 16px;color:#6b7280;font-size:15px;line-height:1.8}
+  .end b{color:#23262b;display:block;font-size:17px;margin-bottom:8px}
+  hr{border:0;border-top:1px solid #e3ded6;margin:24px 0}
+  .toast{position:fixed;left:50%;bottom:26px;margin-left:-44%;width:88%;background:#23262b;color:#fff;
+         padding:12px 20px;border-radius:99px;font-size:15px;z-index:200;opacity:0;pointer-events:none;
+         transition:opacity .25s;text-align:center;box-sizing:border-box}
+  .toast.show{opacity:.95}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="tbin">
+  <span class="tbt">修正进度</span>
+  <div class="bar"><div class="barf" id="barf"></div></div>
+  <span class="barn" id="barn">0%</span>
+</div></div>
+
+<div class="wrap">
+
+<header>
+  <h1>参数修正指南<small>为什么这张图不像碧蓝幻想</small></h1>
+  <p class="sub">我从你那张图里把生成参数完整提取出来了。<br>问题不在提示词，在三个设置上。</p>
+</header>
+
+<div class="nav">
+  <a href="./index.html">改图手把手</a>
+  <a href="./train.html">训练模型</a>
+</div>
+
+<!-- 结论 -->
+<div class="card">
+  <div class="ch"><div class="no">!</div><h2>先说结论</h2></div>
+
+  <div class="note g"><b>✅ 你写对的部分</b>
+    提示词完全正确，一个字都不用改。<br>
+    LoRA 也正常加载了，权重 1。</div>
+
+  <div class="note b"><b>❌ 问题在这三个参数</b>
+    ① ControlNet 用 canny 锁死了整张图<br>
+    ② 底模选的是早期基础版<br>
+    ③ 尺寸和 CFG 不合适</div>
+
+  <div class="note w"><b>⚠️ 所以：先别急着重训模型</b>
+    这三个都是参数问题，跟训练无关。<br>
+    现在重训，等于把同样的错误搬到新模型上，结果还是一样。<br>
+    <b>先把参数改对，再判断要不要重训。</b>
+  </div>
+</div>
+
+<!-- 实际参数 -->
+<div class="card">
+  <div class="ch"><div class="no">1</div><h2>你实际用的参数</h2></div>
+  <p class="lead">这是我从你上传的 PNG 里解析出来的，是真实记录，不是我猜的。</p>
+
+  <table>
+    <tr><th>项目</th><th>实际值</th></tr>
+    <tr><td>底模</td><td class="old">Illustrious-XL v0.1</td></tr>
+    <tr><td>画风模型</td><td>Granblue Fantasy Style（Illustrious 版）</td></tr>
+    <tr><td>LoRA 权重</td><td>1</td></tr>
+    <tr><td>尺寸</td><td class="old">1024 × 1024</td></tr>
+    <tr><td>步数</td><td>30</td></tr>
+    <tr><td>采样器</td><td>Euler a</td></tr>
+    <tr><td>CFG</td><td class="old">7</td></tr>
+    <tr><td>Clip skip</td><td>2</td></tr>
+    <tr><td><b>ControlNet</b></td><td class="old">canny，权重 1，全程生效</td></tr>
+    <tr><td>ControlNet 输入图</td><td class="old">1536 × 1024</td></tr>
+  </table>
+
+  <div class="note"><b>这些数据哪来的</b>
+    Civitai 出图时会把生成参数写进 PNG 的 EXIF 里。<br>
+    上面每一个数字都是从文件里读出来的，可以直接核对。
+  </div>
+</div>
+
+<!-- 问题一 -->
+<div class="card">
+  <div class="ch"><div class="no">2</div><h2>问题一：ControlNet 锁死了构图</h2></div>
+  <p class="lead">这是最严重的一个。</p>
+
+  <p>你开了 ControlNet，用 <b>canny</b> 模式，权重 <b>1</b>，而且<b>全程生效</b>。</p>
+
+  <p>canny 是"<b>描边</b>"模式——它会把原图的边缘提取出来，然后要求模型**严格照着这些边缘画**。</p>
+
+  <div class="note b"><b>后果有两个</b>
+    ① 原图里的<b>文字标注、配色板格子、面板边框</b>，也全被当成"边缘"了。
+       模型得去画这些边框，画风根本改不动。<br><br>
+    ② 你把 <b>1536×1024</b> 的图喂进去，但出图尺寸是 <b>1024×1024</b>。
+       宽高比不一样，所以成图<b>左边的正面视图被裁掉了一半</b>。
+  </div>
+
+  <p>换句话说：AI 被绑住了手脚，只能"描边重新上色"，没法真正重画。</p>
+
+  <div class="note g"><b>✅ 怎么改</b>
+    <b>先把 ControlNet 整个关掉。</b>
+  </div>
+</div>
+
+<!-- 问题二 -->
+<div class="card">
+  <div class="ch"><div class="no">3</div><h2>问题二：底模是早期基础版</h2></div>
+  <p class="lead">这解释了为什么画面平淡发灰。</p>
+
+  <p>你用的底模是 <b>Illustrious-XL v0.1</b>。</p>
+
+  <p>这个模型在 HuggingFace 上的官方仓库名是：</p>
+
+  <div class="cbox">
+    <div class="chead">
+      <span class="clabel">官方仓库名</span>
+      <div class="cbtns">
+        <button class="cbtn" onclick="cp(this,'m1')">📋 复制</button>
+      </div>
+    </div>
+    <div class="ctext" id="m1">OnomaAIResearch/Illustrious-xl-early-release-v0</div>
+  </div>
+
+  <p><b>early-release</b> —— 早期发布版。</p>
+
+  <p>它是"<b>基础模型</b>"，设计上是给社区做二次微调的<b>基座</b>，不是直接拿来出图的成品。
+  它的特点就是<b>平淡、发灰、通用</b>。你看到的效果就是这样。</p>
+
+  <div class="note g"><b>✅ 怎么改：换成在它之上微调过的版本</b>
+    <b>首选：PerfectDeliberate</b><br>
+    <b>备选：Illustrious XL 2.0</b><br><br>
+    在 Civitai 上搜名字就能找到。看"Base Model"那一栏，
+    写着 <b>Illustrious</b> 的就和你的画风模型匹配。<br><br>
+    <b>这一步不用改任何提示词，画质会直接跳一档。</b>
+  </div>
+</div>
+
+<!-- 问题三 -->
+<div class="card">
+  <div class="ch"><div class="no">4</div><h2>问题三：尺寸和 CFG</h2></div>
+
+  <h3>尺寸</h3>
+  <p><b>1024 × 1024</b> 太方了。三视图加侧栏根本排不开，
+  加上上面说的宽高比不匹配，构图必然出问题。</p>
+  <p>改成 <b>1216 × 832</b>（横构图）。</p>
+
+  <h3>CFG</h3>
+  <p><b>CFG 7</b> 对 Illustrious 这一类模型偏高，容易过饱和、丢细节。</p>
+  <p>改成 <b>5</b>。</p>
+</div>
+
+<!-- 对照表 -->
+<div class="card">
+  <div class="ch"><div class="no">5</div><h2>完整对照表</h2></div>
+  <p class="lead">照着改，其他不用动。</p>
+
+  <table>
+    <tr><th>参数</th><th>你现在</th><th>改成</th></tr>
+    <tr><td>ControlNet</td><td class="old">canny w=1</td><td class="new">先整个关掉</td></tr>
+    <tr><td>底模</td><td class="old">Illustrious-XL v0.1</td><td class="new">PerfectDeliberate<br>或 Illustrious XL 2.0</td></tr>
+    <tr><td>尺寸</td><td class="old">1024 × 1024</td><td class="new">1216 × 832</td></tr>
+    <tr><td>CFG</td><td class="old">7</td><td class="new">5</td></tr>
+    <tr><td>LoRA 权重</td><td class="old">1</td><td class="new">0.8</td></tr>
+    <tr><td>步数</td><td>30</td><td>30（不用改）</td></tr>
+    <tr><td>采样器</td><td>Euler a</td><td>Euler a（不用改）</td></tr>
+    <tr><td>Clip skip</td><td>2</td><td>2（不用改）</td></tr>
+    <tr><td>提示词</td><td colspan="2">一个字都不用改</td></tr>
+  </table>
+
+  <div class="cbox">
+    <div class="chead">
+      <span class="clabel">纯文本版（方便对照着看）</span>
+      <div class="cbtns">
+        <button class="cbtn" onclick="cp(this,'m2')">📋 复制</button>
+        <button class="cbtn alt" onclick="sel(this,'m2')">选中</button>
+      </div>
+    </div>
+    <div class="ctext" id="m2">                你现在              改成
+ControlNet      canny w=1           先整个关掉
+底模            Illustrious-XL      PerfectDeliberate
+                v0.1                或 Illustrious XL 2.0
+尺寸            1024 x 1024         1216 x 832
+CFG             7                   5
+LoRA 权重       1                   0.8
+步数            30                  30     （不用改）
+采样器          Euler a             Euler a（不用改）
+Clip skip       2                   2      （不用改）
+提示词          -                   一个字都不用改</div>
+  </div>
+</div>
+
+<!-- 清单 -->
+<div class="card">
+  <div class="ch"><div class="no">6</div><h2>修正清单</h2></div>
+  <p class="lead">点一下就能勾上，进度会自动记住。</p>
+
+  <label class="chk" data-k="p1"><input type="checkbox"><span>把 ControlNet 关掉</span></label>
+  <label class="chk" data-k="p2"><input type="checkbox"><span>底模换成 PerfectDeliberate 或 Illustrious XL 2.0</span></label>
+  <label class="chk" data-k="p3"><input type="checkbox"><span>尺寸改成 1216 × 832</span></label>
+  <label class="chk" data-k="p4"><input type="checkbox"><span>CFG 改成 5</span></label>
+  <label class="chk" data-k="p5"><input type="checkbox"><span>LoRA 权重改成 0.8</span></label>
+  <label class="chk" data-k="p6"><input type="checkbox"><span>出一张纯文字图（不开 ControlNet）</span></label>
+
+  <div class="note"><b>然后看结果</b>
+    <b>像碧蓝幻想了</b> → 问题解决，完全不用重训 🎉<br>
+    <b>还是不像</b> → 把新的参数发我，我们再往下查。
+  </div>
+</div>
+
+<!-- 保构图 -->
+<div class="card">
+  <div class="ch"><div class="no">7</div><h2>如果一定要保住原图的构图</h2></div>
+  <p class="lead">那就别用 canny 铺满整张设定图。</p>
+
+  <table>
+    <tr><th>做法</th><th>怎么改</th></tr>
+    <tr><td>换预处理器</td><td>canny → <b>openpose</b>（只管姿势）<br>或 <b>lineart</b>（只管线稿）</td></tr>
+    <tr><td>降权重</td><td>1 → <b>0.3 ~ 0.5</b></td></tr>
+    <tr><td>提前结束</td><td>End Step 1 → <b>0.6</b><br>留后 40% 的步数给画风发挥</td></tr>
+    <tr><td>对齐宽高比</td><td>输入和输出<b>都用 1216 × 832</b></td></tr>
+  </table>
+
+  <div class="note g"><b>⭐ 最有效的一招</b>
+    <b>只裁出"正面"那一个视图单独处理。</b><br><br>
+    整张设定图有十几个区域（三个视图 + 面部特写 + 表情 + 细节 + 配色板 + 道具），
+    canny 会把它们<b>全部锁成边缘</b>。<br>
+    裁出单个视图，问题立刻少一大半。
+  </div>
+</div>
+
+<!-- 为什么不用重训 -->
+<div class="card">
+  <div class="ch"><div class="no">8</div><h2>为什么现在不建议重新训练</h2></div>
+
+  <table>
+    <tr><th>你看到的现象</th><th>真正的原因</th></tr>
+    <tr><td>构图被裁切</td><td>ControlNet 权重 + 宽高比不匹配</td></tr>
+    <tr><td>画质平淡发灰</td><td>底模用了 early-release 基础版</td></tr>
+    <tr><td>完全不像碧蓝幻想</td><td>上面两个叠加，画风模型没机会发挥</td></tr>
+  </table>
+
+  <p>这三项<b>都是参数问题</b>。</p>
+
+  <p>现在重训，等于把同样的错误原封不动搬到新模型上——
+  <b>训出来还是同样的结果，只是多花了几个小时。</b></p>
+
+  <div class="note w"><b>正确顺序</b>
+    先把参数改对 → 再判断要不要重训。<br>
+    如果改完参数画风对了，那说明画风模型本身没问题，根本不需要重训。
+  </div>
+</div>
+
+<hr>
+
+<div class="card">
+  <h2 style="margin-bottom:14px">还有问题？</h2>
+
+  <div class="faq">
+    <div class="fq" onclick="tg(this)">关掉 ControlNet 之后构图就变了怎么办<span class="ar">＋</span></div>
+    <div class="fa">这是正常的，也是必要的——你得先确认画风模型本身能不能出对的效果。<br><br>确认之后再回到第 7 节，用<b>低权重 + End Step 0.6</b> 的方式把构图加回来，而不是一上来就锁死。</div>
+  </div>
+
+  <div class="faq">
+    <div class="fq" onclick="tg(this)">换了底模，画风模型还能用吗<span class="ar">＋</span></div>
+    <div class="fa">能。只要新底模的"Base Model"那一栏还是 <b>Illustrious</b>，画风模型就照样生效。<br><br>PerfectDeliberate 和 Illustrious XL 2.0 都是 Illustrious 系，可以直接用。</div>
+  </div>
+
+  <div class="faq">
+    <div class="fq" onclick="tg(this)">改完还是不像碧蓝幻想<span class="ar">＋</span></div>
+    <div class="fa">把新图的参数发我（Civitai 图片页面上的 Generation data 截图就行）。<br><br>那时候才有依据判断是不是画风模型本身不对口——<b>到那一步再谈重训</b>。</div>
+  </div>
+
+  <div class="faq">
+    <div class="fq" onclick="tg(this)">为什么模型用 early-release 就不行<span class="ar">＋</span></div>
+    <div class="fa">基础模型是给社区做二次微调的<b>原材料</b>，不是成品。<br><br>打个比方：它是"生面团"，不是"烤好的面包"。社区在它上面微调出来的版本，才是能直接吃的那种。</div>
+  </div>
+</div>
+
+<div class="end">
+  <b>先改参数，别急着重训</b>
+  改完出一张，把结果发过来我帮你看。
+</div>
+
+<div class="nav">
+  <a href="./index.html">改图手把手</a>
+  <a href="./train.html">训练模型</a>
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var KEY = 'params_v1';
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.innerHTML = msg;
+    toastEl.className = 'toast show';
+    if(toastTimer){ clearTimeout(toastTimer); }
+    toastTimer = setTimeout(function(){ toastEl.className = 'toast'; }, 2600);
+  }
+  function getText(id){
+    var el = document.getElementById(id);
+    if(!el){ return ''; }
+    var t = el.innerText || el.textContent || '';
+    return t.replace(/^\s+|\s+$/g, '');
+  }
+  window.sel = function(btn, id){
+    var el = document.getElementById(id);
+    if(!el){ return; }
+    try{
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(range);
+      if(btn){ btn.innerHTML = '👆 已选中'; setTimeout(function(){ btn.innerHTML = '选中'; }, 2500); }
+      toast('已选中，长按文字 → 拷贝');
+    }catch(e){ toast('请长按上面的文字 → 全选 → 拷贝'); }
+  };
+  window.cp = function(btn, id){
+    var text = getText(id);
+    if(!text){ return; }
+    function ok(){
+      if(btn){ btn.innerHTML = '✅ 已复制'; btn.className = 'cbtn ok';
+        setTimeout(function(){ btn.innerHTML = '📋 复制'; btn.className = 'cbtn'; }, 1800); }
+      toast('已复制');
+    }
+    function legacy(){
+      var done = false;
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly','');
+        ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try{ ta.setSelectionRange(0, text.length); }catch(e2){}
+        done = document.execCommand('copy');
+        document.body.removeChild(ta);
+      }catch(e){ done = false; }
+      if(done){ ok(); } else { window.sel(null, id); }
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok)['catch'](legacy);
+    }else{ legacy(); }
+  };
+  window.tg = function(el){
+    var box = el.parentNode;
+    if(!box){ return; }
+    var open = box.className.indexOf('open') !== -1;
+    box.className = open ? 'faq' : 'faq open';
+    var ar = el.getElementsByTagName('span')[0];
+    if(ar){ ar.innerHTML = open ? '＋' : '－'; }
+  };
+
+  var boxes = document.querySelectorAll('.chk input');
+  function labelOf(input){
+    var n = input;
+    while(n && n !== document.body){
+      if(n.className && (' ' + n.className + ' ').indexOf(' chk ') !== -1){ return n; }
+      n = n.parentNode;
+    }
+    return null;
+  }
+  function sync(label, on){
+    if(!label){ return; }
+    var cls = ' ' + label.className + ' ';
+    if(on){ if(cls.indexOf(' on ') === -1){ label.className = label.className + ' on'; } }
+    else { label.className = cls.replace(' on ', ' ').replace(/^\s+|\s+$/g, ''); }
+  }
+  function update(){
+    var total = boxes.length || 1, done = 0, i;
+    for(i = 0; i < boxes.length; i++){ if(boxes[i].checked){ done++; } }
+    var pct = Math.round(done * 100 / total);
+    document.getElementById('barf').style.width = pct + '%';
+    document.getElementById('barn').innerHTML = pct + '%';
+  }
+  function save(){
+    var o = {}, i;
+    for(i = 0; i < boxes.length; i++){
+      var lb = labelOf(boxes[i]);
+      var k = lb ? lb.getAttribute('data-k') : null;
+      if(k && boxes[i].checked){ o[k] = 1; }
+    }
+    try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){}
+  }
+  function load(){
+    var saved = {}, i;
+    try{ saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ saved = {}; }
+    for(i = 0; i < boxes.length; i++){
+      var lb = labelOf(boxes[i]);
+      var k = lb ? lb.getAttribute('data-k') : null;
+      if(k && saved[k]){ boxes[i].checked = true; }
+      sync(lb, boxes[i].checked);
+    }
+    update();
+  }
+  function bind(b){
+    b.addEventListener('change', function(){
+      sync(labelOf(b), b.checked); update(); save();
+    }, false);
+  }
+  var i;
+  for(i = 0; i < boxes.length; i++){ bind(boxes[i]); }
+  load();
+})();
+</script>
+</body>
+</html>
