@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="x5-page-mode" content="default">
+<meta name="theme-color" content="#2f5d9e">
+<title>从零开始 · 一步一步点</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+  body{margin:0;background:#f4f2ee;color:#23262b;font-size:17px;line-height:1.75;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    padding-bottom:70px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 15px}
+  .topbar{position:-webkit-sticky;position:sticky;top:0;z-index:99;background:#efece6;border-bottom:1px solid #e0dbd2}
+  .tbin{max-width:760px;margin:0 auto;padding:9px 15px;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center}
+  .tbt{font-size:13px;font-weight:600;color:#6b7280;margin-right:10px;white-space:nowrap}
+  .bar{-webkit-box-flex:1;flex:1;height:8px;background:#ddd7cd;border-radius:99px;overflow:hidden}
+  .barf{height:100%;width:0;background:#2f8f5b;border-radius:99px;transition:width .3s}
+  .barn{font-size:13px;font-weight:700;color:#2f8f5b;margin-left:10px;min-width:36px;text-align:right}
+  header{padding:30px 0 18px;text-align:center}
+  h1{font-size:24px;line-height:1.35;margin:0 0 10px;font-weight:700}
+  h1 small{display:block;font-size:16px;color:#2f5d9e;font-weight:600;margin-top:6px}
+  .sub{color:#6b7280;font-size:15px;margin:0 auto;max-width:540px;line-height:1.7}
+  .nav{display:-webkit-box;display:flex;margin:14px 0 18px}
+  .nav a{-webkit-box-flex:1;flex:1;text-align:center;text-decoration:none;font-size:13.5px;font-weight:700;
+         color:#2f5d9e;background:#fff;border:1.5px solid #c9dcf3;border-radius:11px;padding:12px 3px;margin-right:7px}
+  .nav a:last-child{margin-right:0}
+  .card{background:#fff;border:1px solid #e3ded6;border-radius:14px;padding:20px 17px;margin:0 0 16px;
+        box-shadow:0 1px 3px rgba(20,20,30,.05)}
+  .ch{display:-webkit-box;display:flex;-webkit-box-align:start;align-items:flex-start;margin-bottom:4px}
+  .no{width:32px;height:32px;min-width:32px;border-radius:9px;background:#2f5d9e;color:#fff;
+      font-weight:700;font-size:15px;text-align:center;line-height:32px;margin-right:11px}
+  .card h2{font-size:19px;margin:0;line-height:1.4;font-weight:700;padding-top:3px}
+  .lead{color:#6b7280;font-size:15px;margin:8px 0 14px}
+  .card p{margin:10px 0}
+  .note{border-left:4px solid #2f5d9e;background:#eaf1fa;padding:12px 14px;border-radius:0 9px 9px 0;margin:14px 0;font-size:15.5px}
+  .note.w{border-color:#a97c2f;background:#fdf6e8}
+  .note.b{border-color:#b4443a;background:#fdeceb}
+  .note.g{border-color:#2f8f5b;background:#e9f6ee}
+  .note b{display:block;margin-bottom:3px}
+  .ui{display:inline-block;background:#eef4fc;border:1px solid #c9dcf3;border-radius:6px;
+      padding:1px 8px;font-weight:700;color:#2f5d9e;font-size:15px;white-space:nowrap}
+  .shot{border:1px solid #e3ded6;border-radius:12px;overflow:hidden;margin:14px 0;background:#fff}
+  .shot svg{display:block;width:100%;height:auto}
+  .shot figcaption{font-size:13px;color:#6b7280;padding:9px 12px;border-top:1px solid #e3ded6;background:#faf9f7;line-height:1.6}
+  .steps{counter-reset:s;padding-left:0;list-style:none;margin:12px 0}
+  .steps li{counter-increment:s;position:relative;padding-left:38px;margin:12px 0;font-size:16px}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:26px;height:26px;
+    border-radius:50%;background:#2f5d9e;color:#fff;font-size:14px;font-weight:700;text-align:center;line-height:26px}
+  .chk{display:-webkit-box;display:flex;padding:14px;margin:8px 0;border:1px solid #e3ded6;border-radius:11px;background:#fcfbf9}
+  .chk.on{background:#e9f6ee;border-color:#bfe3cd}
+  .chk input{-webkit-appearance:none;appearance:none;width:24px;height:24px;min-width:24px;margin:2px 11px 0 0;
+             border:2px solid #c8c2b8;border-radius:7px;background:#fff;position:relative;padding:0}
+  .chk input:checked{background:#2f8f5b;border-color:#2f8f5b}
+  .chk input:checked:after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;
+                           border:solid #fff;border-width:0 2.5px 2.5px 0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+  .chk span{-webkit-box-flex:1;flex:1;font-size:15.5px;line-height:1.6}
+  .chk.on span{color:#1f6b45}
+  .cbox{border:1px solid #c9dcf3;border-radius:11px;overflow:hidden;margin:14px 0;background:#fbfdff}
+  .chead{padding:9px 12px;background:#eef4fc;border-bottom:1px solid #c9dcf3}
+  .clabel{display:block;font-size:13px;font-weight:700;color:#2f5d9e;margin-bottom:8px}
+  .cbtns{display:-webkit-box;display:flex}
+  .cbtn{-webkit-box-flex:1;flex:1;border:0;background:#2f5d9e;color:#fff;font-weight:700;font-size:15px;
+        padding:13px 8px;border-radius:9px;font-family:inherit;min-height:46px;margin-right:8px}
+  .cbtn:last-child{margin-right:0}
+  .cbtn.alt{background:#fff;color:#2f5d9e;border:1.5px solid #2f5d9e}
+  .cbtn.ok{background:#2f8f5b}
+  .ctext{padding:14px;white-space:pre-wrap;word-break:break-word;font-size:15px;line-height:1.8}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:12px 0}
+  th,td{border:1px solid #e0dbd2;padding:9px 8px;text-align:left;line-height:1.5;vertical-align:top}
+  th{background:#f2efe9;font-weight:700}
+  .end{text-align:center;padding:26px 16px;color:#6b7280;font-size:15px;line-height:1.8}
+  .end b{color:#23262b;display:block;font-size:17px;margin-bottom:8px}
+  .toast{position:fixed;left:50%;bottom:26px;margin-left:-44%;width:88%;background:#23262b;color:#fff;
+         padding:12px 20px;border-radius:99px;font-size:15px;z-index:200;opacity:0;pointer-events:none;
+         transition:opacity .25s;text-align:center;box-sizing:border-box}
+  .toast.show{opacity:.95}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="tbin">
+  <span class="tbt">已完成</span>
+  <div class="bar"><div class="barf" id="barf"></div></div>
+  <span class="barn" id="barn">0%</span>
+</div></div>
+
+<div class="wrap">
+
+<header>
+  <h1>从零开始 · 一步一步点<small>打开浏览器开始，一直到出图</small></h1>
+  <p class="sub">一共 13 步。每一步都告诉你<b>点哪里、看到什么算成功</b>。<br>卡住就告诉我第几步。</p>
+</header>
+
+<div class="nav">
+  <a href="./steps.html">一步步做</a>
+  <a href="./params.html">参数</a>
+  <a href="./train.html">训练</a>
+  <a href="./index.html">改图</a>
+</div>
+
+<div class="card">
+  <h2 style="margin-bottom:14px">卡住了怎么办</h2>
+
+  <p>每一步我都写了"怎么知道成功了"。<b>如果那一条你没看到，就是没做对，别往下走。</b></p>
+
+  <p>告诉我<b>第几步</b>卡住，以及<b>当时屏幕上是什么样</b>。最好的方式是直接截图。</p>
+
+  <div class="note g"><b>截图发我最准</b>
+    把你当时那个画面整屏截下来发过来。<br>
+    我直接在你截的图上告诉你点哪里 —— <b>比我画的示意图准得多。</b>
+  </div>
+
+  <p style="margin-top:16px"><b>如果手机上实在不好操作</b>，用电脑浏览器打开同一个网址。账号是同步的，界面宽敞很多。</p>
+</div>
+
+<div class="end">
+  <b>13 步做完，你就有一张像碧蓝幻想的设定图了</b>
+  卡在哪一步就说第几步，我针对那一步再讲细一点。
+</div>
+
+<div class="nav">
+  <a href="./index.html">改图</a>
+  <a href="./params.html">参数</a>
+  <a href="./train.html">训练</a>
+</div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var KEY = 'steps_v2';
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function toast(m){
+    toastEl.innerHTML = m; toastEl.className = 'toast show';
+    if(toastTimer){ clearTimeout(toastTimer); }
+    toastTimer = setTimeout(function(){ toastEl.className = 'toast'; }, 2600);
+  }
+  function getText(id){
+    var el = document.getElementById(id); if(!el){ return ''; }
+    return (el.innerText || el.textContent || '').replace(/^\s+|\s+$/g, '');
+  }
+  window.sel = function(btn, id){
+    var el = document.getElementById(id); if(!el){ return; }
+    try{
+      var range = document.createRange(); range.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(range);
+      if(btn){ btn.innerHTML = '👆 已选中'; setTimeout(function(){ btn.innerHTML = '选中'; }, 2500); }
+      toast('已选中，长按文字 → 拷贝');
+    }catch(e){ toast('请长按上面的文字 → 全选 → 拷贝'); }
+  };
+  window.cp = function(btn, id){
+    var text = getText(id); if(!text){ return; }
+    function ok(){
+      if(btn){ btn.innerHTML = '✅ 已复制'; btn.className = 'cbtn ok';
+        setTimeout(function(){ btn.innerHTML = '📋 复制'; btn.className = 'cbtn'; }, 1800); }
+      toast('已复制');
+    }
+    function legacy(){
+      var done = false;
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly','');
+        ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;';
+        document.body.appendChild(ta); ta.focus(); ta.select();
+        try{ ta.setSelectionRange(0, text.length); }catch(e2){}
+        done = document.execCommand('copy');
+        document.body.removeChild(ta);
+      }catch(e){ done = false; }
+      if(done){ ok(); } else { window.sel(null, id); }
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok)['catch'](legacy);
+    }else{ legacy(); }
+  };
+  var boxes = document.querySelectorAll('.chk input');
+  function labelOf(input){
+    var n = input;
+    while(n && n !== document.body){
+      if(n.className && (' ' + n.className + ' ').indexOf(' chk ') !== -1){ return n; }
+      n = n.parentNode;
+    }
+    return null;
+  }
+  function sync(label, on){
+    if(!label){ return; }
+    var cls = ' ' + label.className + ' ';
+    if(on){ if(cls.indexOf(' on ') === -1){ label.className = label.className + ' on'; } }
+    else { label.className = cls.replace(' on ', ' ').replace(/^\s+|\s+$/g, ''); }
+  }
+  function update(){
+    var total = boxes.length || 1, done = 0, i;
+    for(i = 0; i < boxes.length; i++){ if(boxes[i].checked){ done++; } }
+    var pct = Math.round(done * 100 / total);
+    document.getElementById('barf').style.width = pct + '%';
+    document.getElementById('barn').innerHTML = pct + '%';
+  }
+  function save(){
+    var o = {}, i;
+    for(i = 0; i < boxes.length; i++){
+      var lb = labelOf(boxes[i]); var k = lb ? lb.getAttribute('data-k') : null;
+      if(k && boxes[i].checked){ o[k] = 1; }
+    }
+    try{ localStorage.setItem(KEY, JSON.stringify(o)); }catch(e){}
+  }
+  function load(){
+    var saved = {}, i;
+    try{ saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ saved = {}; }
+    for(i = 0; i < boxes.length; i++){
+      var lb = labelOf(boxes[i]); var k = lb ? lb.getAttribute('data-k') : null;
+      if(k && saved[k]){ boxes[i].checked = true; }
+      sync(lb, boxes[i].checked);
+    }
+    update();
+  }
+  function bind(b){
+    b.addEventListener('change', function(){
+      sync(labelOf(b), b.checked); update(); save();
+    }, false);
+  }
+  var i;
+  for(i = 0; i < boxes.length; i++){ bind(boxes[i]); }
+  load();
+})();
+</script>
+</body>
+</html>

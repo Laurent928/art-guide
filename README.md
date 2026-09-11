@@ -1,27 +1,30 @@
 # AI 绘图上手指南
 
-## 👉 要打开网页，请点这个网址
+## 👉 打开网址
 
 **https://laurent928.github.io/art-guide/**
 
-| 页面 | 网址 |
-|---|---|
-| 改图手把手（主页） | https://laurent928.github.io/art-guide/ |
-| 训练自己的模型 | https://laurent928.github.io/art-guide/train.html |
-| **参数修正指南** | https://laurent928.github.io/art-guide/params.html |
-| 单文件离线版（前两页合一） | https://laurent928.github.io/art-guide/single.html |
+| 页面 | 干什么 | 网址 |
+|---|---|---|
+| **一步步做** ⭐ | 从打开浏览器开始，13 步带你出图 | /steps.html |
+| 改图手把手 | 改腰部皮带、加过膝袜 | / |
+| 参数修正 | 出的图不像碧蓝幻想时查这里 | /params.html |
+| 训练自己的模型 | 想训自己的画风再看 | /train.html |
+| 单文件离线版 | 前两页合一，可离线 | /single.html |
+
+**新手建议顺序：`一步步做` → `改图手把手` → 不够用再看 `训练`**
 
 ---
 
 ## ⚠️ 不要直接点仓库里的 .html
 
-GitHub 的仓库页面**不会把 HTML 渲染成网页**，只会显示源代码。
-必须用上面的 **github.io 网址**打开，才会看到正常页面。
+GitHub 仓库页面**不会渲染 HTML**，只显示源代码。
+必须用上面的 **github.io 网址**打开。
 
 ---
 
 ## 说明
 
 - 纯静态页面，**无任何外部依赖**
-- 中文字体、复制按钮、勾选进度都在本地完成
 - 手机 / iPad / 电脑浏览器都能打开
+- **不要用微信/QQ 内置浏览器**，功能会受限
