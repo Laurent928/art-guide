@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="x5-page-mode" content="default">
+<meta name="theme-color" content="#2f5d9e">
+<title>名词速查 · 界面上那些英文什么意思</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+  body{margin:0;background:#f4f2ee;color:#23262b;font-size:17px;line-height:1.75;
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    padding-bottom:70px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 15px}
+  .topbar{position:-webkit-sticky;position:sticky;top:0;z-index:99;background:#efece6;border-bottom:1px solid #e0dbd2}
+  .tbin{max-width:760px;margin:0 auto;padding:9px 15px;display:-webkit-box;display:flex;-webkit-box-align:center;align-items:center;gap:8px}
+  .tbt{font-size:13px;font-weight:600;color:#6b7280;white-space:nowrap}
+  #q{-webkit-box-flex:1;flex:1;border:1.5px solid #c9dcf3;border-radius:9px;padding:8px 11px;
+     font-size:15px;font-family:inherit;background:#fff;color:#23262b;min-width:0}
+  header{padding:30px 0 18px;text-align:center}
+  h1{font-size:24px;line-height:1.35;margin:0 0 10px;font-weight:700}
+  h1 small{display:block;font-size:16px;color:#2f5d9e;font-weight:600;margin-top:6px}
+  .sub{color:#6b7280;font-size:15px;margin:0 auto;max-width:540px;line-height:1.7}
+  .nav{display:-webkit-box;display:flex;margin:14px 0 18px;flex-wrap:wrap}
+  .nav a{-webkit-box-flex:1;flex:1 1 40%;text-align:center;text-decoration:none;font-size:13.5px;font-weight:700;
+         color:#2f5d9e;background:#fff;border:1.5px solid #c9dcf3;border-radius:11px;padding:11px 3px;margin:0 6px 6px 0}
+  .card{background:#fff;border:1px solid #e3ded6;border-radius:14px;padding:20px 17px;margin:0 0 16px;
+        box-shadow:0 1px 3px rgba(20,20,30,.05)}
+  .card h2{font-size:19px;margin:0 0 6px;font-weight:700}
+  .card h3{font-size:16px;margin:20px 0 7px;color:#2f5d9e}
+  .lead{color:#6b7280;font-size:15px;margin:8px 0 14px}
+  .card p{margin:10px 0}
+  .note{border-left:4px solid #2f5d9e;background:#eaf1fa;padding:12px 14px;border-radius:0 9px 9px 0;margin:14px 0;font-size:15.5px}
+  .note.w{border-color:#a97c2f;background:#fdf6e8}
+  .note.g{border-color:#2f8f5b;background:#e9f6ee}
+  .note b{display:block;margin-bottom:3px}
+  dl{margin:0}
+  dt{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;color:#2f5d9e;
+     font-size:16px;margin-top:18px;padding-bottom:3px;border-bottom:1px solid #eef4fc}
+  dt:first-child{margin-top:0}
+  dd{margin:7px 0 0;font-size:15.5px}
+  dd em{font-style:normal;color:#6b7280;font-size:14.5px}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin:12px 0}
+  th,td{border:1px solid #e0dbd2;padding:9px 8px;text-align:left;line-height:1.5;vertical-align:top}
+  th{background:#f2efe9;font-weight:700}
+  .end{text-align:center;padding:26px 16px;color:#6b7280;font-size:15px;line-height:1.8}
+  .end b{color:#23262b;display:block;font-size:17px;margin-bottom:8px}
+  .hide{display:none}
+  .count{font-size:13px;color:#6b7280;text-align:center;margin:-6px 0 12px}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="tbin">
+  <span class="tbt">搜一搜</span>
+  <input id="q" type="search" placeholder="输入英文词，比如 denoise" autocomplete="off">
+</div></div>
+
+<div class="wrap">
+
+<header>
+  <h1>名词速查<small>界面上那些英文什么意思</small></h1>
+  <p class="sub">忘了哪个词就搜一下。<b>也可以在浏览器里用 Ctrl+F 搜。</b></p>
+</header>
+
+<div class="nav">
+  <a href="./index.html">首页</a>
+  <a href="./steps.html">一步步做</a>
+  <a href="./keep.html">保住设定</a>
+  <a href="./params.html">参数修正</a>
+  <a href="./glossary.html">名词速查</a>
+  <a href="./train.html">训练模型</a>
+</div>
+
+<p class="count" id="count"></p>
+
+<!-- 我该用哪个功能 -->
+<div class="card">
+  <h2>先看这个：我想做的事 → 用哪个功能</h2>
+  <p class="lead">不确定用什么的时候，先查这里。</p>
+  <table>
+    <tr><th>我想……</th><th>用这个</th></tr>
+    <tr><td>从零画一个新角色</td><td>纯文字出图（直接写提示词）</td></tr>
+    <tr><td><b>保住原来的设计，只改画风</b></td><td class="good">图生图 + Denoise 0.5</td></tr>
+    <tr><td>让角色摆一个指定的姿势</td><td>ControlNet（openpose）</td></tr>
+    <tr><td>严格按照我画的草图出图</td><td>ControlNet（scribble / lineart）</td></tr>
+    <tr><td>把出好的图放大变清晰</td><td>Hi-res fix，或放大功能</td></tr>
+    <tr><td>把脸修好</td><td>Face fix</td></tr>
+    <tr><td>让同一个角色每次都长得一样</td><td>训练一个角色 LoRA</td></tr>
+    <tr><td>复现别人的一张图</td><td>点那张图的 Remix（但会带入它全部设置）</td></tr>
+    <tr><td>把图改成横向的</td><td>Aspect Ratio → Landscape</td></tr>
+    <tr><td>参数是灰的点不动</td><td>关掉 Draft Mode</td></tr>
+  </table>
+</div>
+
+<!-- 界面名词 -->
+<div class="card">
+  <h2>界面上会看到的词</h2>
+
+  <dl>
+    <dt>Create</dt>
+    <dd>开始画图的按钮。<em>在页面右上角，蓝色的。</em></dd>
+
+    <dt>Model</dt>
+    <dd>底模，也就是"画师"。决定整体画风和画质。<em>最重要的一项。</em></dd>
+
+    <dt>Add Model</dt>
+    <dd>点它换底模。<em>会弹出一个模型列表让你搜。</em></dd>
+
+    <dt>+ Add Additional Resource</dt>
+    <dd>添加附加资源，主要用来加 <b>LoRA</b>（画风模型 / 角色模型）。</dd>
+
+    <dt>LoRA</dt>
+    <dd>"画风补丁"。加载它，出图就会往某个画风或某个角色靠。<em>旁边通常有数字框，那是权重，一般 0.7~0.9。</em></dd>
+
+    <dt>Prompt</dt>
+    <dd>正向提示词。写你<b>想要</b>什么。</dd>
+
+    <dt>Negative Prompt</dt>
+    <dd>负面提示词。写你<b>不想要</b>什么。<em>ChatGPT 没有这一栏，这是 Civitai 的优势。</em></dd>
+
+    <dt>Draft Mode</dt>
+    <dd>草稿模式。<b>开着会让很多高级选项变灰、点不动。</b><em>遇到"参数调不了"，先关它。</em></dd>
+
+    <dt>Aspect Ratio</dt>
+    <dd>画面比例。SDXL 有三个预设：<br>
+      Square <b>1024×1024</b>（方）<br>
+      <b>Landscape 1216×832</b>（横，画三视图用）<br>
+      Portrait <b>832×1216</b>（竖，画单人立绘用）</dd>
+
+    <dt>Steps</dt>
+    <dd>步数。AI 画多少笔。太少会糊，太多没用。<em>一般 25~35，建议 30。</em></dd>
+
+    <dt>CFG Scale</dt>
+    <dd>听话程度。太低乱画，太高颜色发糊。<em>Illustrious 系建议 5，别超过 7。</em></dd>
+
+    <dt>Sampler</dt>
+    <dd>采样算法。<em>新手就用 Euler a。</em></dd>
+
+    <dt>Seed</dt>
+    <dd>随机种子。<b>同一个种子 + 同样的提示词 = 同样的图。</b><em>想复现某张图就把它填进去锁住。</em></dd>
+
+    <dt>Clip skip</dt>
+    <dd>跳过几层文本编码。<em>动漫模型一般用 2。</em></dd>
+
+    <dt>Denoise / Denoising Strength</dt>
+    <dd><b>图生图的核心参数</b>，决定"保留原图多少"。<br>
+      0.3 = 几乎不变 · <b>0.5 = 保设计改画风</b> · 0.75 = 开始跑 · 0.9+ = 等于重画。</dd>
+
+    <dt>Generate</dt>
+    <dd>生成按钮。<em>最下面那个蓝色大按钮。</em></dd>
+
+    <dt>Remix</dt>
+    <dd>别人图片上的按钮。<b>会把你带进生成页，并且把那张图的全部设置一起带进来</b>——包括它用的 ControlNet 和参考图。<em>不知道自己为什么有参考图时，八成是点了这个。</em></dd>
+
+    <dt>Buzz</dt>
+    <dd>Civitai 的站内点数。生成图片会消耗。<em>每天登录会送一些。</em></dd>
+
+    <dt>Generation data</dt>
+    <dd>图片的生成参数。<b>点开一张图就能看到</b>，包括提示词、种子、模型、LoRA。<em>出问题时截图这个发出来最有用。</em></dd>
+  </dl>
+</div>
+
+<!-- 功能名词 -->
+<div class="card">
+  <h2>功能名词</h2>
+
+  <dl>
+    <dt>txt2img（纯文字出图）</dt>
+    <dd>只给提示词，从零开始画。<b>好处是完全自由，坏处是每次都会重新发明设计。</b></dd>
+
+    <dt>img2img（图生图）</dt>
+    <dd>给一张参考图，让 AI 以它为底稿重画。<b>配合 Denoise 使用，是"保住设计"的正确工具。</b></dd>
+
+    <dt>ControlNet</dt>
+    <dd>把结构、姿势、线条<b>锁死</b>的工具。<br>
+      常见模式：<br>
+      · <b>canny</b> — 描边（会把文字和边框也锁进去，慎用）<br>
+      · <b>openpose</b> — 只管人体姿势<br>
+      · <b>lineart</b> — 只管线稿<br>
+      · <b>scribble</b> — 涂鸦，随便画个火柴人就行<br>
+      <em>它是"锁死"，不是"参考"。想保留设计又想改画风，用图生图而不是它。</em></dd>
+
+    <dt>Hi-res fix</dt>
+    <dd>高清修复。先出一张初稿，再做一次低强度重绘，<b>细节和清晰度会明显变好</b>。<em>基本可以一直开着。</em></dd>
+
+    <dt>Face fix</dt>
+    <dd>修脸。<b>专门重画脸部</b>，眼睛和皮肤细节会好很多。<em>要检测到人脸才生效。也叫 ADetailer / FaceDetailer。</em></dd>
+
+    <dt>Workflow（工作流）</dt>
+    <dd>预设的处理流程。比如"出图 + 高清修复 + 修脸"打包成一个。 <em>Hi-res fix、Face fix 都在这里面。</em></dd>
+
+    <dt>Checkpoint / Base model</dt>
+    <dd>底模。就是 Model 那一栏选的东西。<em>比如 Illustrious、Pony、NoobAI 都是底模系。</em></dd>
+
+    <dt>Trigger word（触发词）</dt>
+    <dd>LoRA 的"开关词"。<b>必须写进提示词，LoRA 才会生效。</b><em>比如碧蓝幻想画风的是 gbf_style。</em></dd>
+
+    <dt>Embedding</dt>
+    <dd>另一种附加资源，用来加强或压制某些内容。<em>新手一般用不到。</em></dd>
+
+    <dt>Upscale（放大）</dt>
+    <dd>把小图变清晰的大图。<b>不要一开始就出大图，先出 1024 再放大更好。</b></dd>
+
+    <dt>Inpaint（局部重绘）</dt>
+    <dd>只改画面里的一部分，其他不动。<em>修手、修配饰很好用。</em></dd>
+  </dl>
+</div>
+
+<!-- 常见说法 -->
+<div class="card">
+  <h2>可能会看到的其他说法</h2>
+  <table>
+    <tr><th>看到的</th><th>意思</th></tr>
+    <tr><td>SDXL</td><td>一类底模的规格。尺寸在 1024 附近，Illustrious 就是这一类</td></tr>
+    <tr><td>SD 1.5</td><td>更老的规格，尺寸 512 附近。LoRA 不能和 SDXL 混用</td></tr>
+    <tr><td>Pony</td><td>另一种底模系。它有自己的提示词写法（score_9 那一套）</td></tr>
+    <tr><td>Illustrious</td><td>一种动漫底模系。碧蓝幻想画风 LoRA 就是给它做的</td></tr>
+    <tr><td>Base Model（模型页面上那一栏）</td><td><b>LoRA 必须和底模同系</b>。写着 Illustrious 的就配 Illustrious 的底模</td></tr>
+    <tr><td>safetensors</td><td>模型文件的格式。安全，优先选它</td></tr>
+    <tr><td>GGUF</td><td>压缩过的模型，省显存但慢一点</td></tr>
+    <tr><td>抽卡</td><td>行话。同一个提示词多出几张挑好的。<b>这是正常流程，不是你操作错了</b></td></tr>
+    <tr><td>过拟合</td><td>模型学过头了。只能画出训练集里的样子，换个姿势就崩</td></tr>
+    <tr><td>底模</td><td>就是 Checkpoint / Model</td></tr>
+    <tr><td>负面词</td><td>Negative Prompt 里的内容</td></tr>
+  </table>
+</div>
+
+<div class="note w" style="margin:0 0 16px">
+  <b>没找到你想查的词？</b>
+  把界面上看到的词截图发过来，我告诉你它是什么意思、要不要改。
+</div>
+
+<div class="end">
+  <b>忘了词就回来搜一下</b>
+  这个页面可以一直留着。
+</div>
+
+<div class="nav">
+  <a href="./index.html">首页</a>
+  <a href="./steps.html">一步步做</a>
+  <a href="./keep.html">保住设定</a>
+  <a href="./params.html">参数修正</a>
+  <a href="./glossary.html">名词速查</a>
+  <a href="./train.html">训练模型</a>
+</div>
+
+</div>
+
+<script>
+(function(){
+  var q = document.getElementById('q');
+  var dts = document.querySelectorAll('dt');
+  var cards = document.querySelectorAll('.card');
+  var countEl = document.getElementById('count');
+
+  // 给每个 dt 的说明包一层，方便隐藏
+  function total(){ return dts.length; }
+  countEl.innerHTML = '共 ' + total() + ' 个词条';
+
+  function run(){
+    var kw = (q.value || '').replace(/^\s+|\s+$/g, '').toLowerCase();
+    if (!kw){
+      for (var i=0;i<dts.length;i++){
+        var dt = dts[i], dd = dt.nextElementSibling;
+        dt.className = ''; if (dd) { dd.className = ''; }
+      }
+      for (var j=0;j<cards.length;j++){ cards[j].className = 'card'; }
+      countEl.innerHTML = '共 ' + total() + ' 个词条';
+      return;
+    }
+    var hit = 0;
+    for (var k=0;k<dts.length;k++){
+      var d = dts[k], v = d.nextElementSibling;
+      var txt = (d.textContent + ' ' + (v ? v.textContent : '')).toLowerCase();
+      var ok = txt.indexOf(kw) >= 0;
+      d.className = ok ? '' : 'hide';
+      if (v) { v.className = ok ? '' : 'hide'; }
+      if (ok) { hit++; }
+    }
+    countEl.innerHTML = '找到 ' + hit + ' 个词条';
+  }
+
+  q.addEventListener('input', run, false);
+  q.addEventListener('search', run, false);
+})();
+</script>
+</body>
+</html>
